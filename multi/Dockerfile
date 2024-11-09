@@ -1,13 +1,9 @@
-FROM gcc:12.4.0 AS compiler
+FROM ubuntu:20.04 AS base
+RUN apt update
+CMD [ "sh", "-c", "echo My name is $my_name" ]
 
-WORKDIR /app
-COPY ./hello.c .
-RUN gcc hello.c
+FROM base AS dev
+ENV my_name=TEST
 
-
-FROM ubuntu:latest
-
-WORKDIR /app
-COPY --from=compiler /app/a.out .
-
-CMD [ "./a.out" ]
+FROM base AS pro
+ENV my_name=Bob
