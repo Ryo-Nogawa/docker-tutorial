@@ -1,7 +1,9 @@
 FROM ubuntu:20.04
 
-ARG message
+RUN touch 1.txt
+WORKDIR /app/my_dir
+RUN touch 2.txt
+WORKDIR ..
+RUN touch 3.txt
 
-RUN echo $message > message.txt
-
-CMD [ "cat", "message.txt" ]
+CMD [ "bash" ]
