@@ -1,8 +1,6 @@
 FROM ubuntu:20.04
 
-RUN apt update
-RUN apt install -y curl
+ENV hello="Hello World"
+ENV hoge=HOGEHOGE
 
-COPY . /app/
-
-CMD [ "ls", "-la" ]
+CMD [ "bash" ]
